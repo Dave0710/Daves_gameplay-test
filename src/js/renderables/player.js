@@ -1,0 +1,91 @@
+import { Entity, game, input} from 'melonjs/dist/melonjs.module.js';
+
+class PlayerEntity extends Entity {
+
+    /**
+     * constructor
+     */
+    constructor(x, y, settings) {
+        // call the parent constructor
+        super(x, y , settings);
+
+        // max walking & jumping speed
+        this.body.setMaxVelocity(3, 15);
+        this.body.setFriction(0.4, 0);
+
+        // set the display to follow our position on both axis
+        game.viewport.follow(this.pos, game.viewport.AXIS.BOTH, 0.4);
+
+        // ensure the player is updated even when outside of the viewport
+        this.alwaysUpdate = true;
+
+        // define a basic walking animation (using all frame)
+        this.renderable.addAnimation("walk",  [0, 1, 2, 3, 4, 5, 6, 7]);
+
+        // define a standing animation (using the first frame
+        this.renderable.addAnimation("stand",  [0]);
+
+        // set the standing animation as default
+        this.renderable.setCurrentAnimation("stand");
+    }
+
+    /**
+     * update the entity
+     */
+    update(dt) {
+        if (input.isKeyPressed('left')) {
+
+            // flip the sprite on horizontal axis
+            this.renderable.flipX(true);
+            // update the default force
+            this.body.force.x = -this.body.maxVel.x;
+            // change to the walking animation
+            if (!this.renderable.isCurrentAnimation("walk")) {
+                this.renderable.setCurrentAnimation("walk");
+            }
+        } else if (input.isKeyPressed('right')) {
+
+            // unflip the sprite
+            this.renderable.flipX(false);
+            // update the entity velocity
+            this.body.force.x = this.body.maxVel.x;
+            // change to the walking animation
+            if (!this.renderable.isCurrentAnimation("walk")) {
+                this.renderable.setCurrentAnimation("walk");
+            }
+        } else {
+            // change to the standing animation
+            this.renderable.setCurrentAnimation("stand");
+        }
+
+        if (input.isKeyPressed('jump')) {
+
+            if (!this.body.jumping && !this.body.falling)
+            {
+                // set current vel to the maximum defined value
+                // gravity will then do the rest
+                this.body.force.y = -this.body.maxVel.y
+            }
+        } else {
+            this.body.force.y = 0;
+        }
+
+
+        return (super.update(dt) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
+        // change body force based on inputs
+        //....
+        // call the parent hod
+        // return super.update(dt);
+    }
+
+   /**
+     * colision handler
+     * (called when colliding with other objects)
+     */
+    onCollision(response, other) {
+        // Make all other objects solid
+        return true;
+    }
+};
+
+export default PlayerEntity;
