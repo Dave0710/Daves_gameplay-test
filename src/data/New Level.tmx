@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#00f900" nextlayerid="7" nextobjectid="14">
+ <tileset firstgid="1" source="../../../Tiled Project/area01_level_tiles.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+4,42,43,42,43,42,43,42,43,42,43,42,43,42,43,42,43,42,43,5,
+24,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,25,
+24,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,25,
+24,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,25,
+44,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,45
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer">
+  <object id="1" name="mainPlayer" x="50.2191" y="252.498" width="64" height="64">
+   <properties>
+    <property name="framewidth" type="int" value="64"/>
+    <property name="image" value="gripe_run_right"/>
+   </properties>
+  </object>
+  <object id="9" name="HealthEntity" x="449.663" y="8.74344" width="182.363" height="52.4607">
+   <properties>
+    <property name="framewidth" type="int" value="64"/>
+    <property name="image" value="health-bar"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Object Layer 4">
+  <object id="10" name="LifeEntity" x="153.635" y="186.11" width="32" height="32">
+   <properties>
+    <property name="framewidth" type="int" value="64"/>
+    <property name="image" value="lifeicon"/>
+   </properties>
+  </object>
+  <object id="11" name="LifeEntity" x="234.824" y="184.861" width="32" height="32">
+   <properties>
+    <property name="framewidth" type="int" value="64"/>
+    <property name="image" value="lifeicon"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Object Layer 3">
+  <object id="8" name="EnemyEntity" x="358.481" y="261.054" width="268.549" height="47.4644">
+   <properties>
+    <property name="framewidth" type="int" value="64"/>
+    <property name="image" value="wheelie_right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="collision">
+  <object id="7" x="2.49813" y="326.005" width="635.773" height="148.639"/>
+ </objectgroup>
+</map>
